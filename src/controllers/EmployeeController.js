@@ -1,0 +1,16 @@
+const EmployeeService = require('../services/EmployeeService');
+
+const findAllEmployee = async (_req, res) => {
+  try {
+    const employees = await EmployeeService.findAllEmployee();
+
+    return res.status(200).json(employees);
+  } catch (e) {
+    console.log(e.message);
+    res.status(500).json({ message: 'Ocorreu um erro'});
+  };
+};
+
+module.exports = {
+  findAllEmployee,
+}
