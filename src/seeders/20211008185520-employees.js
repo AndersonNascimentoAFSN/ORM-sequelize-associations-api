@@ -31,6 +31,13 @@ module.exports = {
         created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
         updated_at: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
+      {
+        first_name: 'Antonio',
+        last_name: 'Augusto',
+        age: 18,
+        created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
+        updated_at: Sequelize.literal('CURRENT_TIMESTAMP'),
+      },
     ], {});
 
   },

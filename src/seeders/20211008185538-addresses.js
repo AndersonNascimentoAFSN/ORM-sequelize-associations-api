@@ -36,6 +36,14 @@ module.exports = {
         updated_at: Sequelize.literal('CURRENT_TIMESTAMP'),
       },
       {
+        city: 'Belo Horizonte',
+        street: 'Rua Vicente Alvarenga',
+        number: 80,
+        employee_id: 1,
+        created_at: Sequelize.literal('CURRENT_TIMESTAMP'),
+        updated_at: Sequelize.literal('CURRENT_TIMESTAMP'),
+      },
+      {
         city: 'Curitiba',
         street: 'Rua Fria',
         number: 101,
