@@ -4,5 +4,6 @@ const EmployeeController = require('../controllers/EmployeeController');
 const route = express.Router();
 
 route.get('/', EmployeeController.findAllEmployee);
+route.get('/:id', EmployeeController.findEmployeeByPk);
 
 module.exports = route;
