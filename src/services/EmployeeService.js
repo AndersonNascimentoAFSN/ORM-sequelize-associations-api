@@ -1,5 +1,10 @@
 const { Employee, Address } = require('../models');
 
+const Sequelize = require('sequelize');
+const config = require('../config/config');
+
+const sequelize = new Sequelize(config.development);
+
 //// Eager Loading
 const findAllEmployee = async () => {
   const employees = await Employee.findAll({
@@ -48,8 +53,26 @@ const findAllAddressesByPk = async (id) => {
   return addresses;
 }
 
+const createEmployee = async (newEmployeeData, newAddressData) => {
+  try {
+    const t = await sequelize.transaction();
+  
+    const createdEmployee = await Employee.create(newEmployeeData, { transaction: t });
+  
+    await Address.create({...newAddressData, employeeId: createdEmployee.id},
+      { transaction: t });
+  
+      await t.commit();
+      return createdEmployee;
+  } catch (e) {
+    console.log(e.message);
+    await t.rollback();
+  }
+}
+
 module.exports = {
   findAllEmployee,
   findEmployeeByPk,
   findAllAddressesByPk,
+  createEmployee,
 }

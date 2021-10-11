@@ -30,7 +30,39 @@ const findEmployeeByPk = async (req, res) => {
   }
 }
 
+//// Create sem transação:
+
+// const createEmployee = async (req, res) => {
+//   try {
+//     const { firstName, lastName, age, city, street, number } = req.body;
+
+//     const employee = await EmployeeService.createEmployee({ firstName, lastName, age }, { city, street, number });
+
+//     return res.status(201).json(employee.dataValues);
+//   } catch (e) {
+//     console.log(e.message);
+//     res.status(500).json({ message: e.message });
+//   }
+// }
+
+//// create com transação:
+
+const createEmployee = async (req, res) => {
+  try {
+    const { firstName, lastName, age, city, street, number } = req.body;
+
+    const employee = await EmployeeService.createEmployee({ firstName, lastName, age }, { city, street, number });
+
+    return res.status(201).json(employee.dataValues);
+  } catch (e) {
+    console.log(e.message);
+    res.status(500).json({ message: e.message });
+  }
+}
+
+
 module.exports = {
   findAllEmployee,
   findEmployeeByPk,
+  createEmployee,
 }
