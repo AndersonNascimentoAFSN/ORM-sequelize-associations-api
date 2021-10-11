@@ -10,5 +10,6 @@ app.use(bodyParser.json());
 app.get('/', (req, res) => res.send('Hello World!'));
 
 app.use('/employees', routes.EmployeeRouter);
+app.use('/usersbooks', routes.UserBooksRoutes);
 
 module.exports = app;
